@@ -1,0 +1,44 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">New Movement</h1>
+    <div class="buttons">
+      <button class="button" ng-click="closeModal()"><i class="ion-close-round"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form name="form" ng-submit="addMovement(m, form)" novalidate>
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Description</span>
+          <input  type="text" name="description" ng-model="m.description" placeholder="Movement description" required
+                  ng-class="{'has-error' : submitted && form.description.$invalid }" />
+          <span ng-show="submitted && form.description.$error.required"
+                class="error-message">
+            The description is required
+          </span>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Amount</span>
+          <input type="number" name="price" ng-model="m.price" placeholder="$0.00" required
+                 ng-class="{'has-error' : submitted && form.price.$invalid }" />
+          <span ng-show="submitted && form.description.$error.required"
+                class="error-message">
+            The amount is required
+          </span>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Date</span>
+          <input type="date" ng-model="m.date" name="date" required
+                 ng-class="{'has-error' : submitted && form.date.$invalid }" />
+          <span ng-show="submitted && form.description.$error.required"
+                class="error-message">
+            The date is required
+          </span>
+        </label>
+        <button type="submit" class="button button-block button-balanced" ng-click="submitted = true">
+          Add Movement
+        </button>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

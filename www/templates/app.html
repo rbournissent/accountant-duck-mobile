@@ -1,0 +1,43 @@
+<ion-pane>
+
+  <div class="bar bar-subheader bar-positive">
+    <h1 class="title">Movements</h1>
+  </div>
+
+  <ion-content class="has-header has-subheader has-footer">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" ng-model="search" placeholder="Search by description">
+      </label>
+    </div>
+
+    <div class="list card">
+
+      <div ng-show="error" class="item">{{ error }}</div>
+
+      <div ng-show="!filtered.length" class="item">
+        There are no movements <span ng-show="search">with {{ search }}</span>.
+      </div>
+
+      <div ng-repeat="m in filtered = (movements | orderBy:created_at | filter:search)" class="item item-icon-left item-button-right">
+        <i class="icon" ng-class="{'ion-ios-arrow-thin-right': m.type === 'Deposit', 'ion-ios-arrow-thin-left': m.type === 'Extraction'}"></i>
+        {{ m.created_at | date }} <br>
+        {{ m.description }} | ${{ m.price | number:2 }}
+        <button class="button button-assertive" ng-click="removeMovement($index)">
+          <i class="icon ion-trash-b"></i>
+        </button>
+      </div>
+
+    </div>
+  </ion-content>
+
+  <div class="bar bar-footer bar-stable">
+    <h4 class="title">Saldo: ${{ balance | number:2 }}</h4>
+    <button ng-click="openModal()" class="button button-positive">
+      <i class="icon ion-compose"></i>
+      Add Movement
+    </button>
+  </div>
+
+</ion-pane>

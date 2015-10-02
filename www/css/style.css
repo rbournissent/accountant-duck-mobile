@@ -1,0 +1,29 @@
+.ion-ios-arrow-thin-left {
+  color: #ef473a;
+}
+.ion-ios-arrow-thin-right {
+  color: #33cd5f;
+}
+
+@media (max-width: 500px) {
+  .bar-footer .title {
+    text-align: left;
+  }
+}
+
+.modal {
+  border-radius: 10px;
+}
+
+.modal button[type="submit"] {
+  margin: 10px auto;
+  width: 90%;
+}
+
+input.has-error {
+  border-bottom: 2px solid #C62121;
+}
+
+.error-message {
+  color: #C62121;
+}
